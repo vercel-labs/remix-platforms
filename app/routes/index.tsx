@@ -19,17 +19,24 @@ export const loader: LoaderFunction = async ({ request }) => {
     host = host.replace(`.${domain}`, "");
   }
 
+  const currentSite = await prisma.site.findUnique({
+    where: {
+      slug: host,
+    },
+  });
+
+  if (!currentSite) {
+    throw new Response(null, {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
+
   const sites = await prisma.site.findMany({
     select: {
       slug: true,
     },
     take: 100,
-  });
-
-  const currentSite = await prisma.site.findUnique({
-    where: {
-      slug: host,
-    },
   });
 
   return json({
