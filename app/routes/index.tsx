@@ -57,14 +57,20 @@ export default function Index() {
   const { domain, sites, currentSite } = useLoaderData<typeof loader>();
 
   return (
-    <div className="w-full h-screen flex flex-col items-center space-y-3 justify-center">
+    <div className="w-full h-screen flex flex-col items-center space-y-4 justify-center">
       <h1 className="font-bold text-3xl">{currentSite.name}</h1>
-      <p>{currentSite.description}</p>
-      <div className="flex space-x-3">
+      <p className="text-gray-600 max-w-md text-center">
+        {currentSite.description}
+      </p>
+      <div className="flex space-x-3 py-4 border-t border-gray-200">
         {sites.map(({ slug }: { slug: string }) => (
           <a
             key={slug}
-            href={`https://${slug}.${domain}`}
+            href={`http${
+              process.env.NODE_ENV === "production" ? "s" : ""
+            }://${slug}.${
+              process.env.NODE_ENV === "production" ? domain : "localhost:3001"
+            }`}
             className={`underline underline-offset-4 font-medium ${
               currentSite.slug === slug ? "text-black" : "text-gray-500"
             } hover:text-black transition-colors`}
