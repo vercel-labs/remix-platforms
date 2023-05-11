@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@vercel/remix";
+import type { LinksFunction, MetaFunction } from "@vercel/remix";
+import styles from "./styles/app.css";
 import {
   Links,
   LiveReload,
@@ -11,9 +12,13 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Remix Platforms",
   viewport: "width=device-width,initial-scale=1",
 });
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
 
 export default function App() {
   return (
