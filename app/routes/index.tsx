@@ -50,23 +50,22 @@ export default function Index() {
   const { domain, sites, currentSite } = useLoaderData<typeof loader>();
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1 className="text-red-500">{currentSite.name}</h1>
+    <div className="w-full h-screen flex flex-col items-center space-y-3 justify-center">
+      <h1 className="font-bold text-3xl">{currentSite.name}</h1>
       <p>{currentSite.description}</p>
-      <ul>
+      <div className="flex space-x-3">
         {sites.map(({ slug }: { slug: string }) => (
-          <li key={slug}>
-            <a
-              href={`https://${slug}.${domain}`}
-              className={`text-underline underline-offset-4 font-medium ${
-                currentSite.slug === slug ? "text-black" : "text-gray-500"
-              } hover:text-black transition-colors`}
-            >
-              {slug}.{domain}
-            </a>
-          </li>
+          <a
+            key={slug}
+            href={`https://${slug}.${domain}`}
+            className={`underline underline-offset-4 font-medium ${
+              currentSite.slug === slug ? "text-black" : "text-gray-500"
+            } hover:text-black transition-colors`}
+          >
+            {slug}.{domain}
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
