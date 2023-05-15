@@ -1,4 +1,8 @@
-import type { LoaderFunction, MetaFunction } from "@vercel/remix";
+import type {
+  LoaderFunction,
+  MetaFunction,
+  HeadersFunction,
+} from "@vercel/remix";
 import { json } from "@vercel/remix";
 import { useLoaderData } from "@remix-run/react";
 import { prisma } from "@/lib/prisma";
@@ -51,6 +55,10 @@ export const meta: MetaFunction = ({ data }) => ({
   title: data.currentSite.name,
   description: data.currentSite.description,
   viewport: "width=device-width,initial-scale=1",
+});
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "max-age=3600, s-maxage=3600",
 });
 
 export default function Index() {
