@@ -1,12 +1,14 @@
-# Remix
+![CleanShot 2023-06-23 at 12 02 29](https://github.com/vercel-labs/remix-platforms/assets/28986134/f1e51d7b-b507-4231-953f-b6878ce92557)
 
-This directory is a brief example of a [Remix](https://remix.run/docs) site that can be deployed to Vercel with zero configuration.
+# Remix Platforms
+
+Multi-tenant [Remix](https://remix.run/docs) application (multiple custom domains with a single codebase)
+
+**Demo**: https://demo.remix.pub/
 
 ## Deploy Your Own
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/remix&template=remix)
-
-_Live Example: https://remix-run-template.vercel.app_
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel-labs/remix-platforms)
 
 You can also deploy using the [Vercel CLI](https://vercel.com/cli):
 
